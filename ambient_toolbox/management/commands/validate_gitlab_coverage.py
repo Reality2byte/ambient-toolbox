@@ -5,9 +5,11 @@ from ambient_toolbox.gitlab.coverage import CoverageService
 
 class Command(BaseCommand):
     """
-    Script to validate if the coverage dropped relatively to the default branch.
-    Works only with GitLab.
+    Compares the test-coverage percentage of the current branch against the default branch
+    using the GitLab API and fails when coverage has dropped.
     """
+
+    help = "Validates that test coverage has not dropped relative to the default branch (GitLab only)."
 
     def handle(self, *args, **options):
         service = CoverageService()

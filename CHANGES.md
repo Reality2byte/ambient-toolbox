@@ -1,5 +1,8 @@
 # Changelog
 
+**12.7.3** (2026-02-17)
+  * Added help texts to all management commands and refined docstrings
+
 **12.7.2** (2026-02-05)
   * Fixed wrong display due to changes in GitLab for coverage checker script
 

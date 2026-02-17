@@ -7,13 +7,17 @@ from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
     """
-    Validates for all active languages (settings.LANGUAGES) the integrity of the PO translation files.
-    The following cases are covered:
-    * Fuzzy translations aren't allowed
-    * Commented-out translations aren't allowed
-    * Validate, that `manage.py makemessages` has been called before committing
-    * Validate, that all translations were actually translated
+    Validates the integrity of PO translation files for every active language in ``settings.LANGUAGES``.
+
+    The following checks are performed:
+
+    * No fuzzy translations remain
+    * No commented-out (obsolete) translations remain
+    * ``manage.py makemessages`` has been run (no uncommitted string changes)
+    * All translation strings have actually been translated
     """
+
+    help = "Validates PO translation file integrity for all active languages."
 
     OK_MESSAGE = "OK."
 
