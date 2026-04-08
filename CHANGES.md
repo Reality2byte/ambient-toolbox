@@ -1,5 +1,8 @@
 # Changelog
 
+**12.9.4** (2026-04-08)
+* No git worktree needed for checking translation file integrity
+
 **12.9.3** (2026-03-30)
 * Maintenance via ambient-package-update
 
