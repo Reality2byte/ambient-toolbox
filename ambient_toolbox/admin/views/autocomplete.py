@@ -8,12 +8,17 @@ class UserLabelAutocompleteJsonView(AutocompleteJsonView):
     """
     Custom autocomplete view that displays User objects with full name and email.
 
-    Wire this view into your URL configuration **before** the admin URLs::
+    Wire this view into your URL configuration **before** the admin URLs.
+    Wrap with ``admin.site.admin_view()`` to enforce staff/login checks::
 
         from ambient_toolbox.admin.views.autocomplete import UserLabelAutocompleteJsonView
 
         urlpatterns = [
-            path("admin/autocomplete/", UserLabelAutocompleteJsonView.as_view(admin_site=admin.site)),
+            path(
+                "admin/autocomplete/",
+                admin.site.admin_view(UserLabelAutocompleteJsonView.as_view(admin_site=admin.site)),
+                name="admin-user-autocomplete",
+            ),
             path("admin/", admin.site.urls),
         ]
 

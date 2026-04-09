@@ -1,5 +1,8 @@
 # Changelog
 
+**12.10.1** (2026-04-09)
+* Improved docs for user-email admin
+
 **12.10.0** (2026-04-09)
 * Added Django admin mixins to show the user by email and not username
 

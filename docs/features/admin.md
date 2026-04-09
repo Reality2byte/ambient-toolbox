@@ -231,10 +231,18 @@ from django.urls import path
 from ambient_toolbox.admin.views.autocomplete import UserLabelAutocompleteJsonView
 
 urlpatterns = [
-    path("admin/autocomplete/", UserLabelAutocompleteJsonView.as_view(admin_site=admin.site)),
+    path(
+        "admin/autocomplete/",
+        admin.site.admin_view(UserLabelAutocompleteJsonView.as_view(admin_site=admin.site)),
+        name="admin-user-autocomplete",
+    ),
     path("admin/", admin.site.urls),
 ]
 ````
+
+Wrapping the view with ``admin.site.admin_view()`` ensures that Django enforces staff/login checks, redirects
+anonymous users to the login page, and sets ``Cache-Control: never_cache`` – consistent with how the built-in admin
+autocomplete URL is registered.
 
 If you want to customise the label format, override ``get_user_display_text()``:
 
